@@ -24,6 +24,8 @@ var Event = Parse.Object.extend("Event", {
 				return Parse.Promise.when(suggestedPaymentPromise, eventImagePromise).then(function(){
 					return event;
 				});
+			} else {
+				return event;
 			}
 		});
 	}
