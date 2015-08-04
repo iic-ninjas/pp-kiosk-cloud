@@ -48,7 +48,7 @@
         <video width="320" height="240" controls>
             <source src="<%= video %>" type="video/mp4">
             Your browser does not support the video tag.
-        </video> 
+        </video>
     </script>
 
     <script id="create-template" type="text/html">
@@ -66,15 +66,19 @@
             <input type="text" id="recipient-email" placeholder="Recipient's PayPal address" />
         </p>
         <p>
-            <input type="text" id="curerncy" placeholder="Currency" />
+            <select id="currency">
+                <option value="USD">USD</option>
+                <option value="ILS">ILS</option>
+                <option value="EUR">EUR</option>
+            </select>
         </p>
         <p>
             <label for="thank-you-note">Thank you note:</label>
             <textarea id="thank-you-note" />
         </p>
         <p>
-            <input type="checkbox" id="custom-amount" />
-            <label for="custom-amount">Allow entering a custom amount</label>
+            <label for="background-image">Background image:</label>
+            <input type="file" id="background-image" />
         </p>
         <p>
             Allowed Greeting Types:<br />
@@ -89,6 +93,27 @@
         </p>
 
         <h2>Suggested Payments</h2>
+        <p class="suggested-payment">
+            <input type="text" id="sp1-name"   placeholder="name" />
+            <input type="text" id="sp1-amount" placeholder="amount" />
+            <input type="file" id="sp1-image" />
+        </p>
+
+        <p class="suggested-payment">
+            <input type="text" id="sp2-name"   placeholder="name" />
+            <input type="text" id="sp2-amount" placeholder="amount" />
+            <input type="file" id="sp2-image" />
+        </p>
+
+        <p class="suggested-payment">
+            <input type="text" id="sp3-name"   placeholder="name" />
+            <input type="text" id="sp3-amount" placeholder="amount" />
+            <input type="file" id="sp3-image" />
+        </p>
+        <p>
+            <input type="checkbox" id="custom-amount" />
+            <label for="custom-amount">Allow entering a custom amount</label>
+        </p>
 
         <input type="button" value="Done" id="done-button" />
 
