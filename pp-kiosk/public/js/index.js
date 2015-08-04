@@ -11,7 +11,7 @@ function processLoginForm(e) {
     		// Do stuff after successful login.
     		console.log("success");
     		console.log(user);
-    		window.location.href = "file:///C:/Projects/tlv-hackathon/pp-kiosk-cloud/pp-kiosk/public/events.html";
+    		window.location.href = "events.html";
   		},
   		error: function(user, error) {
     		// The login failed. Check error to see why.
@@ -38,10 +38,9 @@ $( document ).ready(function() {
 	if (currentUser) {
     	// do stuff with the user
     	console.log(currentUser);
-    	window.location.href = "file:///C:/Projects/tlv-hackathon/pp-kiosk-cloud/pp-kiosk/public/events.html";
+    	window.location.href = "events.html";
 	} else {
     	// show the signup or login page
     	console.log("need to login");
     }
 });
-
