@@ -4,11 +4,11 @@ var SuggestedPayment = Parse.Object.extend("SuggestedPayment");
 var Event = Parse.Object.extend("Event", {
 
 }, {
-	findByCode: function(eventCode) {
+	findByCode: function(eventCode, fetchRelations) {
 		var eventQ = new Parse.Query(Event);
 		eventQ.equalTo("event_code", eventCode);
 		return eventQ.first().then(function(event) {
-			if (event) {
+			if (fetchRelations && event) {
 				var suggestedPaymentQ = new Parse.Query(SuggestedPayment);
 				suggestedPaymentQ.equalTo('event', event);
 				var suggestedPaymentPromise = suggestedPaymentQ.find().then(function(suggestedPayments){
