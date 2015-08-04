@@ -25,8 +25,6 @@ var KioskRouter = Backbone.Router.extend({
 			success: function(results) {
 				var paymentCollection = new Parse.Collection(results);
 
-				console.log(results);
-
 				var paymentsView = new PaymentsView({
 					childView: PaymentView,
 					collection: paymentCollection,
