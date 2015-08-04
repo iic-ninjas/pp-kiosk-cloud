@@ -1,4 +1,5 @@
 var KioskEvent = Parse.Object.extend("Event");
+var SuggestedPayment = Parse.Object.extend("SuggestedPayment");
 
 var KioskRouter = Backbone.Router.extend({
 	routes: {
@@ -75,7 +76,12 @@ var KioskRouter = Backbone.Router.extend({
 	editEvent: function(eventId) {
 		var query = new Parse.Query(KioskEvent);
 		query.get(eventId).then(function(eventToEdit) {
-			console.log(eventToEdit);
+			var spQuery = new Parse.Query(SuggestedPayment);
+			spQuery.equalTo('event', eventToEdit);
+			return spQuery.find().then(function(suggestedPayments){
+				return eventToEdit.set({suggestedPayments: new Parse.Collection(suggestedPayments)});
+			});
+		}).then(function(eventToEdit){
 			window.appLayout.app.show(new EditView({model: eventToEdit}));
 		});
 	}
