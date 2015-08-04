@@ -12,6 +12,7 @@
     <script src="js/vendor/backbone.marionette.js"></script>
     <script src="js/view/event_view.js"></script>
     <script src="js/view/events_view.js"></script>
+    <script src="js/view/payment_view.js"></script>
     <script src="js/view/payments_view.js"></script>
     <script src="js/router.js"></script>
     <script src="js/app.js"></script>
@@ -30,6 +31,20 @@
 
     <script id="payments-template" type="text/html">
         <h1>Payments</h1>
+        <div id="payments"></div>
+    </script>
+
+    <script id="payment-template" type="text/html">
+        <%= from_name %><br>
+        <%= from_email %><br>
+        <div class="profile">
+            <img src="<%= from_image%>" /><br>
+        </div>
+        <%= amount %><br>
+        <video width="320" height="240" controls>
+            <source src="<%= video %>" type="video/mp4">
+            Your browser does not support the video tag.
+        </video> 
     </script>
 
     <div id="app-region">

@@ -6,6 +6,6 @@ var EventView = Marionette.ItemView.extend({
 	},
 
 	_paymentLinkClick: function() {
-		window.app.navigate('payments', {trigger: true});
+		window.app.navigate('/event/' + this.model.id + '/payments', {trigger: true});
 	}
 });

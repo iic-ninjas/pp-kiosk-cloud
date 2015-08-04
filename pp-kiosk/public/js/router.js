@@ -1,11 +1,33 @@
 var KioskRouter = Backbone.Router.extend({
 	routes: {
-		"payments": "payments",
+		"event/:eventid/payments": "payments",
 		"*actions": "defaultRoute"
 	},
 
-	payments: function() {
-		window.appLayout.app.show(new PaymentsView());
+	payments: function(eventid) {
+		var Event = Parse.Object.extend("Event");
+		var myevent = new Event();
+		myevent.id = eventid;
+		var query = new Parse.Query("Payment");
+		query.include("event");
+		query.include("greeting");
+		query.equalTo("event", myevent);
+		query.find({
+			success: function(results) {
+				var paymentCollection = new Parse.Collection(results);
+
+				console.log(results);
+
+				var paymentsView = new PaymentsView({
+					childView: PaymentView,
+					collection: paymentCollection,
+				});
+				window.appLayout.app.show(paymentsView);
+			},
+			error: function(error) {
+				alert("Error: " + error.code + " " + error.message);
+			}
+		});
 	},
 
 	defaultRoute: function() {
