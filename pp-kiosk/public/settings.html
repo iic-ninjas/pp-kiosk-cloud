@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>PP Kiosk Settings</title>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="http://www.parsecdn.com/js/parse-1.5.0.min.js"></script>
+    <script src="file:///C:/Projects/tlv-hackathon/pp-kiosk-cloud/pp-kiosk/public/js/settings.js"></script>
+  </head>
+  <body>
+    <div>
+      <h1>PP Kiosk Create Event</h1>
+        <form>
+          Event Name:<br>
+          <input type="text" name="name">
+          <br>
+          Paypal Email Account:<br>
+          <input type="text" name="recepient_email"><br>
+          Currency:<br>
+          <input type="text" name="currency"><br>
+          Thank You Note:<br>
+          <input type="text" name="thank_you_note"><br>
+          Theme:<br>
+          <select>
+            <option value="wedding">Wedding</option>
+            <option value="fundraiser">Fundraiser</option>
+          </select><br>
+          Custom amounts (Optional):<br>
+          <div id="custom_amount_container">
+            Custom amount:
+            <input type="text" name="custom_amount_1"><br>
+            <a href="#">add another custom amount</a>
+          </div>
+          Greeting Types:<br>
+          Note: <input type="checkbox" name="greetings" value="note"  />
+          Picture: <input type="checkbox" name="sports" value="picture"  />
+          Video: <input type="checkbox" name="sports" value="video"  />
+          Drawing: <input type="checkbox" name="sports" value="drawing"  />
+        </form> 
+    </div>
+  </body>
+</html>

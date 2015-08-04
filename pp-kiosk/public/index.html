@@ -1,21 +1,29 @@
-
 <html>
   <head>
+    <meta charset="UTF-8">
     <title>My ParseApp site</title>
-    <style>
-    body { font-family: Helvetica, Arial, sans-serif; }
-    div { width: 800px; height: 400px; margin: 40px auto; padding: 20px; border: 2px solid #5298fc; }
-    h1 { font-size: 30px; margin: 0; }
-    p { margin: 40px 0; }
-    em { font-family: monospace; }
-    a { color: #5298fc; text-decoration: none; }
-    </style>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="http://www.parsecdn.com/js/parse-1.5.0.min.js"></script>
+    <script src="file:///C:/Projects/tlv-hackathon/pp-kiosk-cloud/pp-kiosk/public/js/index.js"></script>
   </head>
   <body>
     <div>
-      <h1>Congratulations! You're already hosting with Parse.</h1>
-      <p>To get started, edit this file at <em>public/index.html</em> and start adding static content.</p>
-      <p>If you want something a bit more dynamic, delete this file and check out <a href="https://parse.com/docs/hosting_guide#webapp">our hosting docs</a>.</p>
+      <h1>PP Kiosk</h1>
+      <div id="login_or_signup">
+        <div id="login">
+          <form id="login-form">
+            User Name:<br>
+            <input id="login-username" type="text" name="username"><br>
+            Password:<br>
+            <input id="login-password" type="password" name="password"><br>
+            <br>
+            <input type="submit" value="Login">
+          </form>
+          <a id="login" href="#">Create New Account</a>
+        </div>
+        <div id="signup">
+        </div>
+      </div>
     </div>
   </body>
 </html>
