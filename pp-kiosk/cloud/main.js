@@ -1,6 +1,15 @@
+var Event = require('cloud/event.js');
 
-// Use Parse.Cloud.define to define as many cloud functions as you want.
-// For example:
-Parse.Cloud.define("hello", function(request, response) {
+Parse.Cloud.define("getEvent", function(request, response) {
+  // input: request.params.event_code
+  // returns an event + all of the event's images + all of the suggested payments
+  Event.findByCode(request.params.event_code).then(function(event){
+      response.success(event);
+  }).fail(function(error){
+      response.error(error);
+  });
+});
+
+Parse.Cloud.define("doPayment", function(request, response) {
   response.success("Hello world!");
 });
