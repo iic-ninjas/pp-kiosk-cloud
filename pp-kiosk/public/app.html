@@ -1,7 +1,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>My Events</title>
+    <title>PayPal Kiosk</title>
     <script src="//www.parsecdn.com/js/parse-1.5.0.min.js"></script>
     <script src="js/vendor/jquery.js"></script>
     <script src="js/vendor/json2.js"></script>
@@ -10,16 +10,30 @@
     <script src="js/vendor/backbone.wreqr.js"></script>
     <script src="js/vendor/backbone.babysitter.js"></script>
     <script src="js/vendor/backbone.marionette.js"></script>
-    <script src="js/events.js"></script>
+    <script src="js/view/event_view.js"></script>
+    <script src="js/view/events_view.js"></script>
+    <script src="js/view/payments_view.js"></script>
+    <script src="js/router.js"></script>
+    <script src="js/app.js"></script>
   </head>
   <body>
+
+    <script id="events-template" type="text/html">
+        <h1>My events</h1>
+        <div id="events"></div>
+    </script>
+
     <script id="event-template" type="text/html">
         <%= name %>
+        <a href="javascript:;" class="payment-link">Payments</a>
     </script>
-    <div>
-      <h1>My events</h1>
-      <div id="events">
-      </div>
+
+    <script id="payments-template" type="text/html">
+        <h1>Payments</h1>
+    </script>
+
+    <div id="app-region">
+
     </div>
   </body>
 </html>
