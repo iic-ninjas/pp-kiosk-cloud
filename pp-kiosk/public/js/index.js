@@ -11,7 +11,7 @@ function processLoginForm(e) {
     		// Do stuff after successful login.
     		console.log("success");
     		console.log(user);
-    		window.location.href = "events.html";
+    		window.location.href = "app.html";
   		},
   		error: function(user, error) {
     		// The login failed. Check error to see why.
@@ -38,7 +38,7 @@ $( document ).ready(function() {
 	if (currentUser) {
     	// do stuff with the user
     	console.log(currentUser);
-    	window.location.href = "events.html";
+    	window.location.href = "app.html";
 	} else {
     	// show the signup or login page
     	console.log("need to login");

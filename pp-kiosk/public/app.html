@@ -13,6 +13,8 @@
     <script src="js/view/event_view.js"></script>
     <script src="js/view/events_view.js"></script>
     <script src="js/view/payments_view.js"></script>
+    <script src="js/view/create_view.js"></script>
+    <script src="js/view/edit_view.js"></script>
     <script src="js/router.js"></script>
     <script src="js/app.js"></script>
   </head>
@@ -20,6 +22,7 @@
 
     <script id="events-template" type="text/html">
         <h1>My events</h1>
+        <a href="javascript:;" class="create-link">+ Create a new event</a>
         <div id="events"></div>
     </script>
 
@@ -30,6 +33,49 @@
 
     <script id="payments-template" type="text/html">
         <h1>Payments</h1>
+    </script>
+
+    <script id="create-template" type="text/html">
+        <h1>Create Event</h1>
+        <input type="text" id="event-name" placeholder="Event Name" />
+        <input type="button" id="create-button" value="Create" />
+    </script>
+
+    <script id="edit-template" type="text/html">
+        <h1>Edit Event</h1>
+        <p>
+            <input type="text" value="<%= name %>" id="event-name" placeholder="Event Name" />
+        </p>
+        <p>
+            <input type="text" id="recipient-email" placeholder="Recipient's PayPal address" />
+        </p>
+        <p>
+            <input type="text" id="curerncy" placeholder="Currency" />
+        </p>
+        <p>
+            <label for="thank-you-note">Thank you note:</label>
+            <textarea id="thank-you-note" />
+        </p>
+        <p>
+            <input type="checkbox" id="custom-amount" />
+            <label for="custom-amount">Allow entering a custom amount</label>
+        </p>
+        <p>
+            Allowed Greeting Types:<br />
+            <input type="checkbox" id="greeting-type-video" />
+            <label for="greeting-type-video">Video</label>
+
+            <input type="checkbox" id="greeting-type-image" />
+            <label for="greeting-type-image">Photo</label>
+
+            <input type="checkbox" id="greeting-type-note" />
+            <label for="greeting-type-note">Personal Note</label>
+        </p>
+
+        <h2>Suggested Payments</h2>
+
+        <input type="button" value="Done" id="done-button" />
+
     </script>
 
     <div id="app-region">
