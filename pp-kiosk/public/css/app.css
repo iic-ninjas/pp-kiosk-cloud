@@ -92,6 +92,7 @@ div#payments .payment {
 	transition: opacity .4s ease-in-out;
 	column-break-inside: avoid;
 	display: inline-block;
+	height: 415px;
 }
 
 /*
