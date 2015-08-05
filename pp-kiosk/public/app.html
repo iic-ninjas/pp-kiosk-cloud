@@ -39,11 +39,9 @@
         <% if (typeof(event_code) != 'undefined') {%>
         <code><%= event_code %></code>
         <%}%>
-        <span class="event-name"><%= name %></span>
-        <p>
-            <a href="javascript:;" class="edit-link btn btn-xs btn-primary">Edit</a>
-            <a href="javascript:;" class="payment-link btn btn-xs btn-primary">Payments</a>
-        </p>
+        <span class="event-name"><%= name %></span><br/>
+        <a href="javascript:;" class="payment-link btn btn-xs btn-primary">Summary</a>
+        <a href="javascript:;" class="edit-link btn btn-xs btn-primary">Edit</a>
     </script>
 
     <script id="payments-template" type="text/html">
@@ -83,7 +81,6 @@
     </script>
 
     <script id="create-template" type="text/html">
-        <h1>Create Event</h1>
         <input type="text" id="event-name" placeholder="Event Name" />
         <input type="button" id="create-button" value="Create" class="btn btn-primary btn-lg" />
     </script>
