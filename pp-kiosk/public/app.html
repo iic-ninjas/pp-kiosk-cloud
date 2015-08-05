@@ -20,6 +20,7 @@
     <script src="js/view/payment_view.js"></script>
     <script src="js/view/payments_view.js"></script>
     <script src="js/view/create_view.js"></script>
+    <script src="js/view/image_view.js"></script>
     <script src="js/view/edit_view.js"></script>
     <script src="js/router.js"></script>
     <script src="js/app.js"></script>
@@ -70,6 +71,11 @@
         <input type="button" id="create-button" value="Create" />
     </script>
 
+    <script id="image-template" type="text/html">
+        <div id="image" />
+        <input type="file" id="input-file" />
+    </script>
+
     <script id="edit-template" type="text/html">
         <h1>Edit Event</h1>
         <p>
@@ -85,13 +91,19 @@
                 <option value="EUR">EUR</option>
             </select>
         </p>
+        <h2>Event Images</h2>
+        <p>
+            <div id="eventImage1" />
+            <div id="eventImage2" />
+            <div id="eventImage3" />
+        </p>
         <p>
             <label for="thank-you-note">Thank you note:</label>
             <textarea id="thank-you-note" />
         </p>
         <p>
             <label for="background-image">Background image:</label>
-            <input type="file" id="background-image" />
+            <div id="background-image" />
         </p>
         <p>
             Allowed Greeting Types:<br />
@@ -109,19 +121,19 @@
         <p class="suggested-payment">
             <input type="text" id="sp1-name"   placeholder="name" />
             <input type="text" id="sp1-amount" placeholder="amount" />
-            <input type="file" id="sp1-image" />
+            <div id="sp1-image" />
         </p>
 
         <p class="suggested-payment">
             <input type="text" id="sp2-name"   placeholder="name" />
             <input type="text" id="sp2-amount" placeholder="amount" />
-            <input type="file" id="sp2-image" />
+            <div id="sp2-image" />
         </p>
 
         <p class="suggested-payment">
             <input type="text" id="sp3-name"   placeholder="name" />
             <input type="text" id="sp3-amount" placeholder="amount" />
-            <input type="file" id="sp3-image" />
+            <div id="sp3-image" />
         </p>
         <p>
             <input type="checkbox" id="custom-amount" />
