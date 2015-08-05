@@ -6,6 +6,13 @@ var EventView = Marionette.ItemView.extend({
 		'click .edit-link': '_editLinkClick'
 	},
 
+	templateHelpers: function() {
+		if (this.model.has('background_image'))
+			return { background_image: this.model.get('background_image').url()};
+		else
+			return { background_image: ''};
+	},
+
 	_paymentLinkClick: function() {
 		window.app.navigate('/event/' + this.model.id + '/payments', {trigger: true});
 	},
