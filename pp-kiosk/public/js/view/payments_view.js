@@ -9,6 +9,8 @@ var PaymentsView = Marionette.CompositeView.extend({
 		var min_payment = Number.MAX_VALUE;
 		var max_payment = 0;
 		var currency = '';
+		var exportArray = [];
+		exportArray.push("from_name,amount");
 		for ( i in this.collection.models ) {
 			sum += this.collection.models[i].get('amount');
 			min_payment = Math.min(min_payment, this.collection.models[i].get('amount'));
@@ -17,6 +19,10 @@ var PaymentsView = Marionette.CompositeView.extend({
 				// this.event = this.collection.models[i].get('event');
 				currency = this.collection.models[i].get('event').get('currency');
 			}
+			var currPayment = [];
+			currPayment.push(this.collection.models[i].get('from_name'));
+			currPayment.push(this.collection.models[i].get('amount'));
+			exportArray.push(currPayment.join(','));
 		}
 		this.payments_sum = sum;
 		this.max_payment = max_payment;
@@ -25,6 +31,8 @@ var PaymentsView = Marionette.CompositeView.extend({
 			this.min_payment = 0;
 		}
 		this.currency = currency;
+		// console.log(exportArray.join("\n"));
+		this.csvFile = encodeURI("data:text/csv;charset=utf-8,"+exportArray.join("\n"));
     },
 
     templateHelpers: function () {
@@ -35,7 +43,8 @@ var PaymentsView = Marionette.CompositeView.extend({
   			max_payment: this.max_payment / 100,
   			currency: this.currency,
   			currency_symbol: currency_symbol_function,
-  			eventName: this.model.get('name')
+  			eventName: this.model.get('name'),
+  			csvFile: this.csvFile,
     	}
     },
 

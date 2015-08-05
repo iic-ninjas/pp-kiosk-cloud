@@ -46,6 +46,11 @@
 
     <script id="payments-template" type="text/html">
         <a href="javascript:;" class="back-link">Back</a><br>
+        <div class="row" id="export">
+            <div class="col-md-2 col-md-offset-10">
+                <a download="my_data.csv" href="<%=csvFile%>" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-export" aria-hidden="true"></span> Export CSV</a>
+            </div>
+        </div>
         <h1><%= eventName %></h1>
         <div class="row" id="payments-total">
             <div class="col-md-4 col-md-offset-2">
