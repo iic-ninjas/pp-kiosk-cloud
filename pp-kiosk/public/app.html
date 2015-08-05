@@ -29,14 +29,18 @@
 
     <script id="events-template" type="text/html">
         <h1>My events</h1>
-        <a href="javascript:;" class="create-link">+ Create a new event</a>
+        <p>
+            <a href="javascript:;" class="create-link btn btn-primary">+ Create a new event</a>
+        </p>
         <div id="events"></div>
     </script>
 
     <script id="event-template" type="text/html">
         <%= name %>
-        <a href="javascript:;" class="edit-link">Edit</a>
-        <a href="javascript:;" class="payment-link">Payments</a>
+        <p>
+            <a href="javascript:;" class="edit-link btn btn-xs btn-primary">Edit</a>
+            <a href="javascript:;" class="payment-link btn btn-xs btn-primary">Payments</a>
+        </p>
     </script>
 
     <script id="payments-template" type="text/html">
@@ -78,80 +82,71 @@
     <script id="create-template" type="text/html">
         <h1>Create Event</h1>
         <input type="text" id="event-name" placeholder="Event Name" />
-        <input type="button" id="create-button" value="Create" />
+        <input type="button" id="create-button" value="Create" class="btn btn-primary btn-lg" />
     </script>
 
     <script id="image-template" type="text/html">
-        <div id="image" />
+        <div class="image-display" />
         <input type="file" id="input-file" />
     </script>
 
     <script id="edit-template" type="text/html">
-        <h1>Edit Event</h1>
+        <form>
+        <div class="form-group">
+            <input type="text" value="<%= name %>" id="event-name" placeholder="Event Name" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <input type="text" id="recipient-email" placeholder="Recipient's PayPal address" class="form-control" />
+        </div>
         <p>
-            <input type="text" value="<%= name %>" id="event-name" placeholder="Event Name" />
-        </p>
-        <p>
-            <input type="text" id="recipient-email" placeholder="Recipient's PayPal address" />
-        </p>
-        <p>
-            <select id="currency">
+            <label for="currency">Accepted currency</label>
+            <select id="currency" class="form-control">
                 <option value="USD">USD</option>
                 <option value="ILS">ILS</option>
                 <option value="EUR">EUR</option>
             </select>
         </p>
-        <h2>Event Images</h2>
+        <!-- <h2>Event Images</h2>
         <p>
             <div id="eventImage1" />
             <div id="eventImage2" />
             <div id="eventImage3" />
-        </p>
+        </p> -->
+        <div class="form-group">
+            <label for="thank-you-note">Thank-you note</label><br />
+            <textarea class="form-control" id="thank-you-note" rows="5" />
+        </div>
         <p>
-            <label for="thank-you-note">Thank you note:</label>
-            <textarea id="thank-you-note" />
-        </p>
-        <p>
-            <label for="background-image">Background image:</label>
+            <label for="background-image">Splash image</label>
             <div id="background-image" />
-        </p>
-        <p>
-            Allowed Greeting Types:<br />
-            <input type="checkbox" id="greeting-type-video" />
-            <label for="greeting-type-video">Video</label>
-
-            <input type="checkbox" id="greeting-type-image" />
-            <label for="greeting-type-image">Photo</label>
-
-            <input type="checkbox" id="greeting-type-note" />
-            <label for="greeting-type-note">Personal Note</label>
         </p>
 
         <h2>Suggested Payments</h2>
-        <p class="suggested-payment">
-            <input type="text" id="sp1-name"   placeholder="name" />
-            <input type="text" id="sp1-amount" placeholder="amount" />
-            <div id="sp1-image" />
-        </p>
+        <div class="suggested-payment">
+            <div id="sp1-image" class="image-container"></div>
+            <input type="text" id="sp1-name"   placeholder="name" class="form-control" />
+            <input type="text" id="sp1-amount" placeholder="amount" class="form-control" />
+        </div>
 
-        <p class="suggested-payment">
-            <input type="text" id="sp2-name"   placeholder="name" />
-            <input type="text" id="sp2-amount" placeholder="amount" />
-            <div id="sp2-image" />
-        </p>
+        <div class="suggested-payment">
+            <div id="sp2-image" class="image-container"></div>
+            <input type="text" id="sp2-name"   placeholder="name" class="form-control" />
+            <input type="text" id="sp2-amount" placeholder="amount" class="form-control" />
+        </div>
 
-        <p class="suggested-payment">
-            <input type="text" id="sp3-name"   placeholder="name" />
-            <input type="text" id="sp3-amount" placeholder="amount" />
-            <div id="sp3-image" />
-        </p>
+        <div class="suggested-payment">
+            <div id="sp3-image" class="image-container"></div>
+            <input type="text" id="sp3-name"   placeholder="name" class="form-control" />
+            <input type="text" id="sp3-amount" placeholder="amount" class="form-control" />
+        </div>
         <p>
             <input type="checkbox" id="custom-amount" />
             <label for="custom-amount">Allow entering a custom amount</label>
         </p>
 
-        <input type="button" value="Done" id="done-button" />
-
+        <input type="button" value="Done" id="done-button" class="btn btn-success" />
+        </form>
     </script>
 
     <div class="container">

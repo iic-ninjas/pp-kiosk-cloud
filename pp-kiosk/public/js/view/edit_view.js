@@ -1,9 +1,6 @@
 var EditView = Marionette.LayoutView.extend({
 	className: 'edit',
 	template: '#edit-template',
-	events: {
-		"click @ui.doneButton": '_doneClick'
-	},
 
 	ui: {
 		eventName: "#event-name",
@@ -11,9 +8,9 @@ var EditView = Marionette.LayoutView.extend({
 		currency: "#currency",
 		thankYouNote: "#thank-you-note",
 		customAmount: "#custom-amount",
-		gtVideo: "#greeting-type-video",
-		gtImage: "#greeting-type-image",
-		gtNote: "#greeting-type-note",
+		// gtVideo: "#greeting-type-video",
+		// gtImage: "#greeting-type-image",
+		// gtNote: "#greeting-type-note",
 
 		doneButton: "#done-button",
 
@@ -25,6 +22,10 @@ var EditView = Marionette.LayoutView.extend({
 
 		sp3Name:   "#sp3-name",
 		sp3Amount: "#sp3-amount",
+	},
+
+	events: {
+		"click #done-button": '_doneClick'
 	},
 
 	regions: {
@@ -41,11 +42,11 @@ var EditView = Marionette.LayoutView.extend({
 		this.ui.thankYouNote.val(this.model.get('thank_you_note'));
 
 		this.ui.customAmount.attr('checked', this.model.get('custom_amounts'));
-		if (this.model.has('greeting_types')) {
-			this.ui.gtVideo.attr('checked', this.model.get('greeting_types').indexOf("video") >= 0);
-			this.ui.gtImage.attr('checked', this.model.get('greeting_types').indexOf("image") >= 0);
-			this.ui.gtNote.attr('checked',  this.model.get('greeting_types').indexOf("note")  >= 0);
-		}
+		// if (this.model.has('greeting_types')) {
+		// 	this.ui.gtVideo.attr('checked', this.model.get('greeting_types').indexOf("video") >= 0);
+		// 	this.ui.gtImage.attr('checked', this.model.get('greeting_types').indexOf("image") >= 0);
+		// 	this.ui.gtNote.attr('checked',  this.model.get('greeting_types').indexOf("note")  >= 0);
+		// }
 
 		this.backgroundImage = new ImageView({file: this.model.get('background_image')});
 		this.backgroundImageRegion.show(this.backgroundImage);
@@ -53,7 +54,11 @@ var EditView = Marionette.LayoutView.extend({
 		var suggestedPayments = this.model.attributes.suggestedPayments;
 
 		// complete the list to 3
-		switch(suggestedPayments.length) {
+		switch(suggestedPayments.size()) {
+			case 0:
+				var sp = new SuggestedPayment();
+				sp.set("event", this.model);
+				suggestedPayments.add(sp);
 			case 1:
 				var sp = new SuggestedPayment();
 				sp.set("event", this.model);
@@ -65,22 +70,34 @@ var EditView = Marionette.LayoutView.extend({
 			case 3: break;
 		}
 
-		this.ui.sp1Name.val(suggestedPayments.at(0).get('name'));
-		if (suggestedPayments.at(0).has('amount'))
-			this.ui.sp1Amount.val(suggestedPayments.at(0).get('amount') / 100);
-		this.sp1Image = new ImageView({file: suggestedPayments.at(0).get('image')});
+		if (suggestedPayments.at(0)) {
+			this.ui.sp1Name.val(suggestedPayments.at(0).get('name'));
+			if (suggestedPayments.at(0).has('amount'))
+				this.ui.sp1Amount.val(suggestedPayments.at(0).get('amount') / 100);
+			this.sp1Image = new ImageView({file: suggestedPayments.at(0).get('image')});
+		} else {
+			this.sp1Image = new ImageView({file: null});
+		}
 		this.sp1ImageRegion.show(this.sp1Image);
 
-		this.ui.sp2Name.val(suggestedPayments.at(1).get('name'));
-		if (suggestedPayments.at(1).has('amount'))
-			this.ui.sp2Amount.val(suggestedPayments.at(1).get('amount') / 100);
-		this.sp2Image = new ImageView({file: suggestedPayments.at(1).get('image')});
+		if (suggestedPayments.at(1)) {
+			this.ui.sp2Name.val(suggestedPayments.at(1).get('name'));
+			if (suggestedPayments.at(1).has('amount'))
+				this.ui.sp2Amount.val(suggestedPayments.at(1).get('amount') / 100);
+			this.sp2Image = new ImageView({file: suggestedPayments.at(1).get('image')});
+		} else {
+			this.sp2Image = new ImageView({file: null});
+		}
 		this.sp2ImageRegion.show(this.sp2Image);
 
-		this.ui.sp3Name.val(suggestedPayments.at(2).get('name'));
-		if (suggestedPayments.at(2).has('amount'))
-			this.ui.sp3Amount.val(suggestedPayments.at(2).get('amount') / 100);
-		this.sp3Image = new ImageView({file: suggestedPayments.at(2).get('image')});
+		if (suggestedPayments.at(2)) {
+			this.ui.sp3Name.val(suggestedPayments.at(2).get('name'));
+			if (suggestedPayments.at(2).has('amount'))
+				this.ui.sp3Amount.val(suggestedPayments.at(2).get('amount') / 100);
+			this.sp3Image = new ImageView({file: suggestedPayments.at(2).get('image')});
+		} else {
+			this.sp3Image = new ImageView({file: null});
+		}
 		this.sp3ImageRegion.show(this.sp3Image);
 	},
 
@@ -127,11 +144,11 @@ var EditView = Marionette.LayoutView.extend({
 			model.set("thank_you_note", ui.thankYouNote.val());
 			model.set("custom_amounts", ui.customAmount[0].checked);
 
-			var greetingTypes = [];
-			if (ui.gtVideo[0].checked) { greetingTypes.push("video"); }
-			if (ui.gtImage[0].checked) { greetingTypes.push("image"); }
-			if (ui.gtNote[0].checked)  { greetingTypes.push("note"); }
-			model.set("greeting_types", greetingTypes);
+			// var greetingTypes = [];
+			// if (ui.gtVideo[0].checked) { greetingTypes.push("video"); }
+			// if (ui.gtImage[0].checked) { greetingTypes.push("image"); }
+			// if (ui.gtNote[0].checked)  { greetingTypes.push("note"); }
+			// model.set("greeting_types", greetingTypes);
 
 			return model.save().then(function() {
 				window.app.navigate('events', { trigger: true });
