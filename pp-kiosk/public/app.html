@@ -37,6 +37,10 @@
 
     <script id="event-template" type="text/html">
         <%= name %>
+        <strong>Event Code:</strong>
+        <% if (typeof(event_code) != 'undefined') {%>
+        <code><%= event_code %></code>
+        <%}%>
         <p>
             <a href="javascript:;" class="edit-link btn btn-xs btn-primary">Edit</a>
             <a href="javascript:;" class="payment-link btn btn-xs btn-primary">Payments</a>
