@@ -137,17 +137,28 @@ margin-bottom: 5px;
 }
 
 #events .event {
-	height: 50px;
+	height: 60px;
 	border-bottom: solid 1px #cacaca;
 	margin-bottom: 15px;
 }
 
 #events .event .event-image {
-	
+	width: 40px;
+	height: 40px;
+	float: left;
+	margin-right: 20px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	background-color: #dedede;
 }
 
 #events .event .event-name {
 	font-size: 20px;
+
+}
+#events .event a {
+
 }
 
 #events .event code {
