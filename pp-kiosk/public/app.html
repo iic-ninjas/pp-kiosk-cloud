@@ -26,17 +26,20 @@
     <script src="js/app.js"></script>
   </head>
   <body>
-
     <script id="events-template" type="text/html">
-        <h1>My events</h1>
-        <p>
+
+        <div id="events"></div>
+        <p class="create-button-container">
             <a href="javascript:;" class="create-link btn btn-primary">+ Create a new event</a>
         </p>
-        <div id="events"></div>
     </script>
 
     <script id="event-template" type="text/html">
-        <%= name %>
+        <div class="event-image" style="background-image: url('<%=background_image %>');"></div>
+        <% if (typeof(event_code) != 'undefined') {%>
+        <code><%= event_code %></code>
+        <%}%>
+        <span class="event-name"><%= name %></span>
         <p>
             <a href="javascript:;" class="edit-link btn btn-xs btn-primary">Edit</a>
             <a href="javascript:;" class="payment-link btn btn-xs btn-primary">Payments</a>
@@ -148,7 +151,9 @@
         <input type="button" value="Done" id="done-button" class="btn btn-success" />
         </form>
     </script>
-
+    <header>
+        <h1>PayPal Events</h1>
+    </header>
     <div class="container">
         <div id="logout-wrapper">
             <a href="javascript:;" class="logout-link">Logout</a>

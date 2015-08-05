@@ -41,3 +41,16 @@ Parse.Cloud.define("doPayment", function(request, response) {
       response.error(error);
   });
 });
+
+
+Parse.Cloud.beforeSave("Event", function(request, response) {
+    var event = request.object;
+    if (!event.has('event_code')) {
+        eventCode = '' + Math.floor(Math.random() * 10000);
+        if (eventCode.length == 1) eventCode = '000' + eventCode;
+        if (eventCode.length == 2) eventCode = '00' + eventCode;
+        if (eventCode.length == 3) eventCode = '0' + eventCode;
+        event.set("event_code", eventCode);
+    }
+    response.success();
+});
