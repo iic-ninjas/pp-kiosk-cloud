@@ -55,7 +55,7 @@
                 <img class="img-circle img-responsive center-block" src="<%= from_image %>" /><br>
             </div>
             <span class="sender-name"><%= from_name %></span><br>
-            <span class="amount"><%= currency_symbol() %><%= amount %></span><br>
+            <span class="amount"><%= currency_symbol() %><%= amountShow %></span><br>
             <% if ( video ) { %>
             <video controls>
                 <source src="<%= video.url() %>" type="video/mp4">

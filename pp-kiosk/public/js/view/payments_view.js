@@ -29,10 +29,10 @@ var PaymentsView = Marionette.CompositeView.extend({
 
     templateHelpers: function () {
     	return {
-    		payments_sum: this.payments_sum,
+    		payments_sum: this.payments_sum / 100,
   			total_payments: this.collection.models.length,
-  			min_payment: this.min_payment,
-  			max_payment: this.max_payment,
+  			min_payment: this.min_payment / 100,
+  			max_payment: this.max_payment / 100,
   			currency: this.currency,
   			currency_symbol: currency_symbol_function,
   			eventName: this.model.get('name')

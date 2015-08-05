@@ -9,7 +9,8 @@ var PaymentView = Marionette.ItemView.extend({
     	image: this.model.get('greeting').get('image'),
     	note: this.model.get('greeting').get('note'),
     	currency: this.model.get('event').get('currency'),
-    	currency_symbol: currency_symbol_function
+    	currency_symbol: currency_symbol_function,
+    	amountShow: this.model.get('amount') / 100
     };
   }
 });
