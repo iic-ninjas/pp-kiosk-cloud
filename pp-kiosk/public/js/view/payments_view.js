@@ -14,6 +14,7 @@ var PaymentsView = Marionette.CompositeView.extend({
 			min_payment = Math.min(min_payment, this.collection.models[i].get('amount'));
 			max_payment = Math.max(max_payment, this.collection.models[i].get('amount'));
 			if ( currency == '' ) {
+				// this.event = this.collection.models[i].get('event');
 				currency = this.collection.models[i].get('event').get('currency');
 			}
 		}
@@ -21,7 +22,7 @@ var PaymentsView = Marionette.CompositeView.extend({
 		this.max_payment = max_payment;
 		this.min_payment = min_payment;
 		if ( min_payment == Number.MAX_VALUE ){
-			this.min_payment = 0;	
+			this.min_payment = 0;
 		}
 		this.currency = currency;
     },
@@ -33,7 +34,8 @@ var PaymentsView = Marionette.CompositeView.extend({
   			min_payment: this.min_payment,
   			max_payment: this.max_payment,
   			currency: this.currency,
-  			currency_symbol: currency_symbol_function
+  			currency_symbol: currency_symbol_function,
+  			eventName: this.model.get('name')
     	}
     },
 

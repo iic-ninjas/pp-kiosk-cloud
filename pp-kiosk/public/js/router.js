@@ -15,27 +15,42 @@ var KioskRouter = Backbone.Router.extend({
 	},
 
 	payments: function(eventid) {
-		var Event = Parse.Object.extend("Event");
-		var myevent = new Event();
-		myevent.id = eventid;
-		var query = new Parse.Query("Payment");
-		query.include("event");
-		query.include("greeting");
-		query.equalTo("event", myevent);
-		query.find({
-			success: function(results) {
-				var paymentCollection = new Parse.Collection(results);
+		var eventQuery = new Parse.Query("Event");
+		var myevent = null;
+		eventQuery.get(eventid, {
+			success: function(object) {
+    			// object is an instance of Parse.Object.
+    			myevent = object;
 
-				var paymentsView = new PaymentsView({
-					childView: PaymentView,
-					collection: paymentCollection,
+    			var query = new Parse.Query("Payment");
+				query.include("event");
+				query.include("greeting");
+				query.equalTo("event", myevent);
+				query.find({
+					success: function(results) {
+						var paymentCollection = new Parse.Collection(results);
+
+						var paymentsView = new PaymentsView({
+							childView: PaymentView,
+							collection: paymentCollection,
+							model: myevent,
+						});
+						window.appLayout.app.show(paymentsView);
+					},
+					error: function(error) {
+						alert("Error: " + error.code + " " + error.message);
+					}
 				});
-				window.appLayout.app.show(paymentsView);
-			},
-			error: function(error) {
-				alert("Error: " + error.code + " " + error.message);
-			}
+  			},
+  			error: function(object, error) {
+    			// error is an instance of Parse.Error.
+    			alert("Error: " + error.code + " " + error.message);
+  			}
 		});
+
+		// var Event = Parse.Object.extend("Event");
+		// var myevent = new Event();
+		// myevent.id = eventid;
 	},
 
 	events: function() {

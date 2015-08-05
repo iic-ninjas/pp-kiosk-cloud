@@ -39,7 +39,7 @@
     </script>
 
     <script id="payments-template" type="text/html">
-        <h1>Payments</h1>
+        <h1><%= eventName %> Payments</h1>
         <a href="javascript:;" class="back-link">Back</a><br>
         Total payments: <%= currency_symbol() %><%= payments_sum %><br>
         Received from <%= total_payments %> people<br>
@@ -132,8 +132,7 @@
 
     </script>
 
-    <div id="app-region">
-
+    <div id="app-region" class="container">
     </div>
   </body>
 </html>
