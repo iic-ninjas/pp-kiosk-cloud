@@ -40,12 +40,22 @@
     </script>
 
     <script id="payments-template" type="text/html">
-        <h1><%= eventName %> Payments</h1>
         <a href="javascript:;" class="back-link">Back</a><br>
-        Total payments: <%= currency_symbol() %><%= payments_sum %><br>
-        Received from <%= total_payments %> people<br>
-        Minimum payment: <%= currency_symbol() %><%= min_payment %><br>
-        Maximum payment: <%= currency_symbol() %><%= max_payment %><br>
+        <h1><%= eventName %> Summary</h1>
+        <div class="row" id="payments-total">
+            <div class="col-md-4">
+                <h2><%= total_payments %></h2>
+                <h3>People</h3>
+            </div>
+            <div class="col-md-4">
+                <h2><%= currency_symbol() %><%= payments_sum %></h2>
+                <h3>Total</h3>
+            </div>
+            <div class="col-md-4">
+                <h2><%= currency_symbol() %><%= min_payment %> / <%= currency_symbol() %><%= max_payment %></h2>
+                <h3>Min. / Max.</h3>
+            </div>
+        </div>
         <div id="payments"></div>
     </script>
 
@@ -144,7 +154,12 @@
 
     </script>
 
-    <div id="app-region" class="container">
+    <div class="container">
+        <div id="logout-wrapper">
+            <a href="javascript:;" class="logout-link">Logout</a>
+        </div>
+        <div id="app-region">
+        </div>
     </div>
   </body>
 </html>

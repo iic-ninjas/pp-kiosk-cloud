@@ -81,7 +81,9 @@ video {
     flex: 0 1 auto;
 }
 */
-
+div.payments {
+	text-align: center;
+}
 
 div#payments .payment {
 	background: #fefefe;
@@ -109,3 +111,20 @@ margin-bottom: 5px;
 }
 
 */
+
+#logout-wrapper {
+	display: none;
+	float: right;
+}
+
+#create-account {
+	float: right;
+}
+
+#payments-total {
+	text-align: center;
+}
+
+.back-link {
+	float: left;
+}
