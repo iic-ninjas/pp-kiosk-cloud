@@ -45,19 +45,19 @@
 
     <script id="payments-template" type="text/html">
         <a href="javascript:;" class="back-link">Back</a><br>
-        <h1><%= eventName %> Summary</h1>
+        <h1><%= eventName %></h1>
         <div class="row" id="payments-total">
             <div class="col-md-4">
-                <h2><%= total_payments %></h2>
-                <h3>People</h3>
+                <h2 class="top-line-header"><%= total_payments %></h2>
+                <h3 class="bottom-line-header">People</h3>
             </div>
             <div class="col-md-4">
-                <h2><%= currency_symbol() %><%= payments_sum %></h2>
-                <h3>Total</h3>
+                <h2 class="top-line-header"><%= currency_symbol() %><%= payments_sum %></h2>
+                <h3 class="bottom-line-header">Total</h3>
             </div>
             <div class="col-md-4">
-                <h2><%= currency_symbol() %><%= min_payment %> / <%= currency_symbol() %><%= max_payment %></h2>
-                <h3>Min. / Max.</h3>
+                <h2 class="top-line-header"><%= currency_symbol() %><%= min_payment %> / <%= currency_symbol() %><%= max_payment %></h2>
+                <h3 class="bottom-line-header">Min. / Max.</h3>
             </div>
         </div>
         <div id="payments"></div>

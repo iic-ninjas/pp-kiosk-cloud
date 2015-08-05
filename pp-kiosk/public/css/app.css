@@ -4,6 +4,7 @@ video {
     margin-right: auto;
     width: 98%;
     margin-bottom: 2px;
+    max-height: 165px;
 }
 
 .sender-name {
@@ -173,3 +174,11 @@ margin-bottom: 5px;
 	margin-bottom: 15px;
 }
 
+.top-line-header {
+	font-size: 64px;
+}
+
+.bottom-line-header {
+	font-size: 20px;
+	margin-top: 0px;
+}
